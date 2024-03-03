@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Jewelry Store</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5; /* Added background color */
+  }
+
+  nav {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+  }
+
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 18px; /* Increased font size */
+  }
+
+  nav a:hover {
+    text-decoration: underline;
+  }
+
+  h1 {
+    text-align: center;
+    margin-top: 50px; /* Adjusted margin */
+    color: #333; /* Changed color to dark gray */
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2); /* Added text shadow */
+  }
+
+  #password-form {
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    #password {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-right: 10px;
+    }
+
+    #submit-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #submit-btn:hover {
+      background-color: #45a049;
+    }
+
+  input[type="file"],
+  input[type="number"],
+  button {
+    display: block;
+    margin: 10px auto;
+    width: 80%;
+    max-width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+
+  input[type="file"] {
+    margin-bottom: 20px;
+  }
+
+  button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #555;
+  }
+
+  #jewelryList {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .jewelry-item {
+    width: calc(25% - 20px);
+    margin: 10px;
+    text-align: center;
+    background-color: #fff; /* Added background color */
+    padding: 20px; /* Added padding */
+    border-radius: 10px; /* Added border radius */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Added box shadow */
+  }
+
+  .jewelry-item img {
+    max-width: 100%;
+    max-height: 150px;
+    border-radius: 5px; /* Added border radius */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); /* Added box shadow */
+  }
+
+  .jewelry-item p {
+    margin: 10px 0; /* Adjusted margin */
+    color: #333; /* Changed color to dark gray */
+    font-size: 16px; /* Increased font size */
+  }
+
+  .jewelry-item button {
+    background-color: #ccc;
+    color: #333;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px; /* Added border radius */
+    transition: background-color 0.3s ease; /* Added transition */
+  }
+
+  .jewelry-item button:hover {
+    background-color: #ddd;
+  }
+
+  @media screen and (max-width: 768px) {
+    nav {
+      padding: 10px;
+    }
+
+    nav a {
+      margin: 0 10px;
+      font-size: 16px; /* Adjusted font size */
+    }
+
+    .jewelry-item {
+      width: calc(50% - 20px);
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .jewelry-item {
+      width: calc(100% - 20px);
+    }
+
+    input[type="file"],
+    input[type="number"],
+    button {
+      width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+    <nav>
+    <a href="added.html">Akosua's Jewelries</a>
+    <a href="contact.html">CONTACT INFO</a>
+    <a href="try.html">Personal profile</a>
+    <a href="about.html">About</a>
+  </nav>
+  <div id="password-form">
+    <label for="password">Enter Password to proceed: </label>
+    <input type="password" id="password" name="password">
+    <button id="submit-btn" onclick="checkPassword()">Submit</button>
+  </div>
+  <h1>Akosua's Jewelries</h1> <!-- Display heading -->
+  <input type="file" id="imageInput" accept="image/*" placeholder="Choose an image" style="display: none;">
+  <input type="number" id="priceInput" placeholder="Enter price" style="display: none;">
+  <button onclick="addJewelry()" style="display: none;">Add Jewelry</button>
+
+  <h2>Added Jewelry</h2> <!-- Display added jewelry heading -->
+  <ul id="jewelryList"> <!-- Display jewelry list -->
+    <!-- Jewelry items will be displayed here -->
+  </ul>
+
+  <script>
+    // Function to load saved jewelry items from localStorage
+    window.onload = function() {
+      for (var i = 0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+        if (key.startsWith('jewelry_')) {
+          var jewelryData = JSON.parse(localStorage.getItem(key));
+          var listItem = document.createElement('li');
+          listItem.setAttribute('id', key);
+          listItem.classList.add('jewelry-item');
+          listItem.innerHTML = `
+            <img src="${jewelryData.image}" alt="Jewelry">
+            <p>Price: $${jewelryData.price}</p>
+            <button onclick="deleteJewelry('${key}')">Delete</button>
+          `;
+          document.getElementById('jewelryList').appendChild(listItem);
+        }
+      }
+    };
+
+    // Function to check password and display content if correct
+    function checkPassword() {
+      var password = document.getElementById('password').value;
+      if (password === 'ohemaa') {
+        document.getElementById('password-form').style.display = 'none';
+        document.querySelector('nav').style.display = 'block'; // Display navigation
+        document.getElementById('imageInput').style.display = 'block'; // Display image input
+        document.getElementById('priceInput').style.display = 'block'; // Display price input
+        document.querySelector('button').style.display = 'block'; // Display add jewelry button
+        document.querySelector('h2').style.display = 'block'; // Display added jewelry heading
+        document.getElementById('jewelryList').style.display = 'flex'; // Display jewelry list
+      } else {
+        alert('Incorrect password!');
+      }
+    }
+
+    // Function to add jewelry
+    function addJewelry() {
+      var imageInput = document.getElementById('imageInput');
+      var priceInput = document.getElementById('priceInput');
+      var imageFile = imageInput.files[0];
+      var price = priceInput.value;
+  
+      if (!imageFile || !price) {
+        alert("Please select an image and enter a price.");
+        return;
+      }
+  
+      // Create object URL for the image
+      var imageURL = URL.createObjectURL(imageFile);
+  
+      // Create a unique ID for the jewelry item
+      var id = 'jewelry_' + Date.now();
+  
+      // Create HTML for the new jewelry item
+      var listItem = document.createElement('li');
+      listItem.setAttribute('id', id); // Set id for the list item
+      listItem.classList.add('jewelry-item');
+      listItem.innerHTML = `
+        <img src="${imageURL}" alt="Jewelry">
+        <p>Price: Gh$${price}</p>
+        <button onclick="deleteJewelry('${id}')">Delete</button>
+      `;
+  
+      // Add the new jewelry item to the list
+      document.getElementById('jewelryList').appendChild(listItem);
+  
+      // Save the jewelry item to localStorage
+      localStorage.setItem(id, JSON.stringify({ image: imageURL, price: price }));
+    }
+  
+    // Function to delete jewelry
+    function deleteJewelry(id) {
+      // Remove the jewelry item from the list
+      var listItem = document.getElementById(id);
+      listItem.remove();
+  
+      // Remove the jewelry item from localStorage
+      localStorage.removeItem(id);
+    }
+
+    // Function to check and delete expired jewelry items
+    function checkAndDeleteExpiredItems() {
+      for (var i = 0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+        if (key.startsWith('jewelry_')) {
+          var jewelryData = JSON.parse(localStorage.getItem(key));
+          // Check if the jewelry item is older than a certain period (e.g., 30 days)
+          var creationDate = new Date(parseInt(key.split('_')[1]));
+          var currentDate = new Date();
+          var daysDifference = Math.ceil((currentDate - creationDate) / (1000 * 60 * 60 * 24));
+          if (daysDifference >= 30) { // Change 30 to your desired number of days
+            localStorage.removeItem(key); // Remove the expired item from localStorage
+            var listItem = document.getElementById(key);
+            if (listItem) {
+              listItem.remove(); // Remove the expired item from the DOM
+            }
+          }
+        }
+      }
+    }
+
+    // Call the function to check and delete expired items when the page loads
+    checkAndDeleteExpiredItems();
+  </script>
+  
+</body>
+</html>
