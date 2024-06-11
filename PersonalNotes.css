@@ -1,0 +1,58 @@
+.notes-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .note-input textarea {
+    width: calc(100% - 40px);
+    height: 100px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  
+  .note-input button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .notes-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .notes-list li {
+    margin-bottom: 10px;
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .notes-list li span {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  .notes-list li button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 4px
+  } html{background-color: #333;}  

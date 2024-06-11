@@ -1,0 +1,267 @@
+/* Global styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  margin: 0;
+}
+
+/* Container styles */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header styles */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 40px;
+  height: auto;
+}
+
+.app-name {
+  margin-left: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.menu-icon-container {
+  cursor: pointer;
+}
+
+.menu-icon {
+  font-size: 1.5rem;
+}
+
+.menu-label {
+  font-size: 0.8rem;
+}
+
+.theme-toggle,
+.settings-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Menu and Settings panel styles */
+.menu-content,
+.settings-panel {
+  position: absolute;
+  background-color: #090f64;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  display: none; /* Hide menu content and settings panel by default */
+}
+
+.setting-option {
+  margin-bottom: 0.5rem;
+}
+
+.setting-option label {
+  margin-right: 0.5rem;
+}
+
+/* Main content styles */
+.main-content {
+  flex: 1;
+  padding: 1rem;
+}
+
+/* Profile section styles */
+.profile-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 1rem;
+}
+
+.profile-pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-details {
+  flex: 1;
+}
+
+.detail {
+  margin-bottom: 0.5rem;
+}
+
+.detail-label {
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.edit-button {
+  background-color: transparent;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.save-button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.save-button:hover {
+  background-color: #0056b3;
+}
+
+/* Students section styles */
+.students-section {
+  margin-bottom: 2rem;
+}
+
+.add-student-button {
+  padding: 0.5rem 1rem;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-student-button:hover {
+  background-color: #218838;
+}
+
+.student-form {
+  margin-top: 1rem;
+}
+
+.student-added-message {
+  margin-top: 0.5rem;
+  color: #28a745;
+}
+
+/* Students list styles */
+.students-list ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.students-list li {
+  margin-bottom: 1rem;
+}
+
+.delete-icon {
+  margin-left: 0.5rem;
+  color: #dc3545;
+  cursor: pointer;
+}
+
+.delete-icon:hover {
+  color: #bd2130;
+}
+
+/* Dashboard actions styles */
+.dashboard-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.action-button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.action-button:hover {
+  background-color: #0056b3;
+}
+
+/* Media queries for responsiveness */
+@media only screen and (max-width: 768px) {
+  .app-header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu-content,
+  .settings-panel {
+    position: fixed;
+    width: 100%;
+    top: 4rem; /* Adjust based on header height */
+    left: 0;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .profile-info {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .profile-pic {
+    margin-bottom: 1rem;
+  }
+}
+/* Menu styles */
+.menu-content {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  display: none; /* Hide menu content by default */
+}
+
+.menu-content ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-content li {
+  padding: 0.5rem 0;
+  cursor: pointer;
+}
+
+.menu-content li:hover {
+  color: #007bff;
+}
+
+/* Media queries for responsiveness */
+@media only screen and (min-width: 768px) {
+  /* Menu styles */
+  .menu-content {
+    display: block; /* Show menu content on larger screens */
+  }
+}

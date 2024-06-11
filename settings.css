@@ -1,0 +1,120 @@
+/* Reset and base styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9; /* Light gray background */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+h2 {
+  text-align: center;
+  color: #333; /* Dark gray text color */
+}
+
+.setting-item {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: inherit;
+}
+
+.theme-toggle-btn, .btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.theme-toggle-btn:hover, .btn:hover {
+  background-color: #0056b3;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.toggle-switch input[type="checkbox"] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 34px;
+  transition: background-color 0.3s;
+}
+
+.toggle::before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+input[type="checkbox"]:checked + .toggle {
+  background-color: #007bff;
+}
+
+input[type="checkbox"]:checked + .toggle::before {
+  transform: translateX(26px);
+}
+
+/* Dark theme styles */
+.dark-theme {
+  background-color: #333;
+  color: #fff;
+}
+
+.dark-theme .container {
+  background-color: #444;
+  color: #fff;
+}
+
+.dark-theme .theme-toggle-btn, .dark-theme .btn {
+  background-color: #555;
+}
+
+.dark-theme .theme-toggle-btn:hover, .dark-theme .btn:hover {
+  background-color: #777;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+  .container {
+    max-width: 100%;
+    padding: 10px;
+  }
+}

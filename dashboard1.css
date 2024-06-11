@@ -1,0 +1,217 @@
+/* Reset and base styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Dashboard container */
+.dashboard-container {
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "sidebar main-content right-section"
+        "sidebar dashboard-actions right-section";
+    grid-template-columns: 250px 1fr 250px;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    transition: all 0.3s ease;
+}
+
+/* Header styles */
+.app-header {
+    grid-area: header;
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    height: 50px;
+}
+
+.app-name {
+    font-size: 24px;
+    margin: 0;
+}
+
+.theme-toggle {
+    cursor: pointer;
+    color: white;
+}
+
+.sidebar-toggle {
+    display: none;
+    cursor: pointer;
+    color: white;
+}
+
+/* Sidebar styles */
+.sidebar {
+    grid-area: sidebar;
+    background-color: #fff;
+    border-right: 1px solid #ccc;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+.sidebar.hide {
+    transform: translateX(-100%);
+}
+
+.menu-content {
+    padding: 15px;
+}
+
+.menu-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-content ul li {
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.menu-content ul li:hover {
+    background-color: #f0f0f0;
+}
+
+/* Main content styles */
+.main-content {
+    grid-area: main-content;
+    padding: 20px;
+    background-color: #fff;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile summary, content section, and dashboard actions styles */
+.profile-summary, .content-section, .dashboard-actions {
+    margin-bottom: 20px;
+}
+
+.profile-info p {
+    margin: 5px 0;
+}
+
+/* Action button styles */
+.dashboard-actions {
+    grid-area: dashboard-actions;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.action-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.action-button:hover {
+    background-color: #0056b3;
+}
+
+/* Right section styles */
+.right-section {
+    grid-area: right-section;
+    padding: 20px;
+    background-color: #fff;
+    border-left: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark theme styles */
+.dark-theme {
+    background-color: #333;
+    color: #fff;
+}
+
+.dark-theme .sidebar {
+    background-color: #444;
+}
+
+.dark-theme .main-content, .dark-theme .right-section {
+    background-color: #555;
+}
+
+.dark-theme .dashboard-actions {
+    background-color: #444;
+}
+
+.dark-theme .action-button {
+    background-color: #555;
+    color: #ddd;
+}
+
+.dark-theme .action-button:hover {
+    background-color: #666;
+}
+
+/* Light theme styles */
+.light-theme {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.light-theme .sidebar {
+    background-color: #fff;
+}
+
+.light-theme .main-content, .light-theme .right-section, .light-theme .dashboard-actions {
+    background-color: #fff;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .dashboard-container {
+        grid-template-areas:
+            "header"
+            "main-content"
+            "right-section"
+            "dashboard-actions";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr auto auto;
+    }
+
+    .sidebar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        transform: translateX(-100%);
+        z-index: 10;
+    }
+
+    .sidebar.show {
+        transform: translateX(0);
+    }
+
+    .sidebar-toggle {
+        display: block;
+    }
+
+    .main-content, .right-section, .dashboard-actions {
+        margin: 0;
+        padding: 10px;
+        box-shadow: none;
+    }
+}

@@ -1,0 +1,58 @@
+/* src/requestExeat.css */
+
+.exeat-form-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    max-width: 400px;
+  }
+  
+  .exeat-form-container h2 {
+    margin-bottom: 20px;
+  }
+  
+  .exeat-form-container .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .exeat-form-container .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .exeat-form-container .form-group input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .exeat-form-container .form-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .exeat-form-container .form-actions .action-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .exeat-form-container .form-actions .action-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .exeat-form-container .form-actions .action-button svg {
+    margin-right: 5px;
+  }
+  
