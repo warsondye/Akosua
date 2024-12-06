@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -261,18 +262,42 @@
             document.getElementById('timer').innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
         }
         setInterval(updateCountdown, 1000);
-
-        // Post Birthday Wish
         function postWish() {
-            const wishText = document.getElementById('wish').value;
-            if (wishText) {
-                const wish = document.createElement('div');
-                wish.classList.add('wish');
-                wish.textContent = wishText;
-                document.getElementById('wishes').appendChild(wish);
-                document.getElementById('wish').value = ''; // Clear input
+            const wishText = document.getElementById('wish').value.trim();
+            const whatsappNumber = "+233553120843"; // Replace with the actual WhatsApp number
+
+            if (!wishText) {
+                showToast("Please enter a wish before posting!");
+                return;
             }
+
+            // Append the wish locally
+            const wish = document.createElement('div');
+            wish.classList.add('wish');
+            wish.textContent = wishText;
+            document.getElementById('wishes').appendChild(wish);
+
+            // Clear the input field
+            document.getElementById('wish').value = '';
+
+            // Encode and redirect to WhatsApp
+            const encodedMessage = encodeURIComponent(`🎉 Birthday Wish: ${wishText}`);
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            window.open(whatsappURL, '_blank');
+
+            // Show success toast
+            showToast("Wish sent successfully!");
         }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
 
         // Blushing Messages
         function showBlushingMessage() {
